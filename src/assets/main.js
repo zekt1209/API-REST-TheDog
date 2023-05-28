@@ -87,3 +87,5 @@ saveLomito1.addEventListener("click", saveFavoriteLomitos);
 // Funciones Invocadas al cargar la pagina por primera vez
 loadRandomLomitos();
 loadFavorteLomitos();
+
+// Test for commit
