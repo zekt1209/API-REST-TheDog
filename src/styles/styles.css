@@ -1,0 +1,34 @@
+:root {
+
+}
+
+body {
+
+}
+
+.michi-image {
+    width: 150px;
+    height: 150px;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.randomSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 750px;
+}
+
+.michisImagesContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.loadMoreMichis {
+    margin-top: 30px;
+}
