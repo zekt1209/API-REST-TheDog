@@ -1,19 +1,18 @@
 :root {
-
 }
 
 body {
-
 }
 
-.michi-image {
+.lomito-image {
     width: 150px;
     height: 150px;
 }
 
 .mainContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .randomSection {
@@ -24,11 +23,11 @@ body {
     width: 750px;
 }
 
-.michisImagesContainer {
+.lomitosRandomImagesContainer {
     display: flex;
     gap: 20px;
 }
 
-.loadMoreMichis {
+.loadMoreLomitos {
     margin-top: 30px;
 }
