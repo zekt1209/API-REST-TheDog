@@ -1,0 +1,2 @@
+# API-REST-TheDog
+WebPage where we consume a REST API usin the following HTTP Methods: GET, POST, DELETE, to Show random dog images, Insert dogs on favorites section, Delete dogs from favorites, and finally, upload a dog from your device galery 
