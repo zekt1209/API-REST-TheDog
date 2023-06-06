@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>API REST Fundamentals</title>
+
+        <link
+            rel="stylesheet"
+            href="./styles/styles.css"
+        />
+    </head>
+    <body>
+        <div class="mainContainer">
+            <div class="randomSection">
+                <span id="spanError"></span>
+
+                <h1>Random Lomitos</h1>
+                <div class="lomitosRandomImagesContainer">
+                    <article class="articleImgContainer">
+                        <img
+                            class="lomito-image"
+                            id="img1"
+                            alt="lomito-picture"
+                            srcset=""
+                        />
+                        <button id="btnSaveLomito1">Save on Favorites</button>
+                    </article>
+
+                    <article class="articleImgContainer">
+                        <img
+                            class="lomito-image"
+                            id="img2"
+                            alt="lomito-picture"
+                            srcset=""
+                        />
+                        <button id="btnSaveLomito2">Save on Favorites</button>
+                    </article>
+
+                    <article class="articleImgContainer">
+                        <img
+                            class="lomito-image"
+                            id="img3"
+                            alt="lomito-picture"
+                            srcset=""
+                        />
+                        <button id="btnSaveLomito3">Save on Favorites</button>
+                    </article>
+                </div>
+                <button
+                    class="loadMoreLomitos"
+                    id="loadMoreBtn"
+                >
+                    Load more Lomitos
+                </button>
+            </div>
+
+            <div class="favoriteSection">
+                <h1>Favorite Lomitos</h1>
+                <div id="lomitosCardsContainer" class="lomitosFavoriteImgsContainer">
+                    <!-- <article>
+                        <img
+                            class="lomito-image"
+                            id="img1"
+                            alt="lomito-picture"
+                            srcset=""
+                        />
+                        <button>Delete from Favorites</button>
+                    </article> -->
+                </div>
+            </div>
+        </div>
+
+        <script src="./assets/main.js"></script>
+    </body>
+</html>

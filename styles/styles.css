@@ -1,0 +1,56 @@
+:root {
+}
+
+body {
+}
+
+.lomito-image {
+    width: 150px;
+    height: 150px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Random Section */
+
+.randomSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 750px;
+}
+
+.lomitosRandomImagesContainer {
+    display: flex;
+    gap: 20px;
+}
+
+/* Favorite Section */
+
+.favoriteSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 750px;
+}
+
+.lomitosFavoriteImgsContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.articleImgContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.loadMoreLomitos {
+    margin-top: 30px;
+}
