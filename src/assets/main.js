@@ -1,4 +1,10 @@
 const api_key = "live_J3iggKLJBobNvVInly0u18H5QJVreUL65aiMy5RZH5B0HQZ49TB0wDZP2BvG0Y4s";
+
+const api_axios = axios.create({
+    baseURL: 'https://api.thedogapi.com/v1',
+    headers: {'X-API-KEY': `${api_key}`}
+});
+
 const API_RANDOM = `https://api.thedogapi.com/v1/images/search`;
 const API_FAVORITES = "https://api.thedogapi.com/v1/favourites";
 const API_UPLOADS = "https://api.thedogapi.com/v1/images/upload";
@@ -109,21 +115,31 @@ const loadFavorteLomitos = async () => {
 
 const saveFavoriteLomitos = async (imageID) => {
     try {
-        const res = await fetch(`${API_FAVORITES}?api_key=${api_key}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                image_id: imageID,
-            }),
+        const {data, status} = await api_axios.post('/favourites', {
+            image_id: imageID,
         });
 
-        if (res.status !== 200) {
-            statusCode = res.status;
+
+        // const res = await fetch(`${API_FAVORITES}?api_key=${api_key}`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         image_id: imageID,
+        //     }),
+        // });
+
+        // const data = await res.json();
+
+        // if (res.status !== 200) {
+        //     statusCode = res.status;
+        // }
+
+        if (status !== 200) {
+            statusCode = status;
         }
 
-        const data = await res.json();
         console.log("Lomito saved: ");
         console.log(data);
 
