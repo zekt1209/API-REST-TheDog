@@ -1,17 +1,7 @@
-console.log("Hello World");
-
-const api_key =
-    "live_J3iggKLJBobNvVInly0u18H5QJVreUL65aiMy5RZH5B0HQZ49TB0wDZP2BvG0Y4s";
+const api_key = "live_J3iggKLJBobNvVInly0u18H5QJVreUL65aiMy5RZH5B0HQZ49TB0wDZP2BvG0Y4s";
 const API_RANDOM = `https://api.thedogapi.com/v1/images/search`;
 const API_FAVORITES = "https://api.thedogapi.com/v1/favourites";
-
-const img1 = document.querySelector("#img1");
-const img2 = document.querySelector("#img2");
-const img3 = document.querySelector("#img3");
-
-
-const loadMoreBtn = document.querySelector("#loadMoreBtn");
-
+const API_UPLOADS = "https://api.thedogapi.com/v1/images/upload";
 
 const spanError = document.querySelector("#spanError");
 
@@ -31,22 +21,36 @@ const loadRandomLomitos = async () => {
         console.log("Random Lomitos");
         console.log(data);
         
-        img1.src = data[0].url;
-        img2.src = data[1].url;
-        img3.src = data[2].url;
-        
-
         const btnSaveLomito1 = document.querySelector("#btnSaveLomito1");
         const btnSaveLomito2 = document.querySelector("#btnSaveLomito2");
         const btnSaveLomito3 = document.querySelector("#btnSaveLomito3");
         
+        const img1 = document.querySelector("#img1");
+        const img2 = document.querySelector("#img2");
+        const img3 = document.querySelector("#img3");
+        
+        img1.src = data[0].url;
+        img2.src = data[1].url;
+        img3.src = data[2].url;
+        
+        //const img3Id = data[2].id;
+
+        
+        
         // IMPORTANT Syntax of add event listener
         // When we have functions that sends our parameters
         // Arrow Function before the function avoids the automatically calling of the function without a click 
-        btnSaveLomito1.addEventListener("click", () => saveFavoriteLomitos(data[0].id));
-        btnSaveLomito2.addEventListener("click", () => saveFavoriteLomitos(data[1].id));
-        btnSaveLomito3.addEventListener("click", () => saveFavoriteLomitos(data[2].id));
+
         
+        // btnSaveLomito1.addEventListener("click", () => saveFavoriteLomitos(data[0].id), {once: true});
+        // btnSaveLomito2.addEventListener("click", () => saveFavoriteLomitos(data[1].id), {once: true});
+        // btnSaveLomito3.addEventListener("click", () => saveFavoriteLomitos(img3Id), {once: true});
+        
+        // We used event Handlers because eventListeners were having issues at the moment to excecute them multiple times, they were saving the olv value and bringind it in future requests
+        btnSaveLomito1.onclick = () => saveFavoriteLomitos(data[0].id);
+        btnSaveLomito2.onclick = () => saveFavoriteLomitos(data[1].id);
+        btnSaveLomito3.onclick = () => saveFavoriteLomitos(data[2].id);
+
     } catch (error) {
         console.error("VGG - Random Error: " + error.message);
         spanError.innerText = "OOOPS! hubo un error :( , STATUS: " + statusCode + ", MENSAJE: " + error.message;
@@ -162,7 +166,45 @@ const deleteFavoriteLomito = async (imageID) => {
     }
 }
 
+const uploadLomitoPicture = async () => {
+
+    try {
+
+        const form = document.querySelector('#uploadingForm');
+        const formData = new FormData(form);
+    
+        console.log(formData.get('file'));
+    
+        const res = await fetch(API_UPLOADS, {
+            method: 'POST',
+            headers: {
+                //'Content-Type': 'multipart/form-data',
+                'X-API-KEY': 'live_J3iggKLJBobNvVInly0u18H5QJVreUL65aiMy5RZH5B0HQZ49TB0wDZP2BvG0Y4s',
+            },
+            body: formData,
+        });
+
+        if (res.status !== 200) {
+            statusCode = res.status;
+        }
+
+        const data = await res.json();
+        console.log('Lomito Uploaded! ');
+        console.log(data);
+        console.log('Data.url: ' + data.url);
+    
+        saveFavoriteLomitos(data.id);
+        loadFavorteLomitos();
+
+    } catch (error) {
+        spanError.innerText = `OOOPS! Hubo un error :( , STATUS: ${statusCode}, MESSAGE: ${error.message}`;
+        console.error(error.message);
+    }
+
+}
+
 // Event Listeners
+const loadMoreBtn = document.querySelector("#loadMoreBtn");
 loadMoreBtn.addEventListener("click", loadRandomLomitos);
 
 
