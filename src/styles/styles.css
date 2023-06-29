@@ -1,19 +1,34 @@
 :root {
+
 }
 
 body {
+    background-color: #ff0019;
 }
 
 .lomito-image {
-    width: 150px;
-    height: 150px;
+    width: 282px;
+    height: 246px;
+
+    border-radius: 8px;
 }
 
 .mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
+
+
+/* Section's container */
+
+.sectionsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 1230px;
+}
+
 
 /* Random Section */
 
@@ -22,12 +37,73 @@ body {
     flex-direction: column;
     align-items: center;
 
-    width: 750px;
 }
 
 .lomitosRandomImagesContainer {
     display: flex;
     gap: 20px;
+
+    background-color: #1c3643;
+    border-radius: 8px;
+
+    padding: 60px;
+}
+
+
+
+/* ------------------------- */
+/* ----------------------------- Like heart button */
+
+.btnSaveRandom {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    
+    
+    width: 35px;
+    height: 35px;
+    
+    /* width: 100%;
+    height: 100%; */
+    
+    
+    background-color: #1c3643;
+    border-radius: 20px;
+    border: none;
+}
+
+
+.spanIconContainer {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+
+/* background-color: transparent; */
+}
+
+/* .heart-icon {
+
+font-size: 30px;
+color: #ff0019;
+} */
+
+.fa-heart {
+display: flex;
+justify-content: center;
+align-items: center;
+
+font-size: 30px;
+color: #ff0019;
+
+width: 100%;
+height: 100%;
+}
+
+.loadMoreLomitos {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /* Favorite Section */
@@ -37,12 +113,14 @@ body {
     flex-direction: column;
     align-items: center;
 
-    width: 750px;
+    /* width: 750px; */
 }
 
 .lomitosFavoriteImgsContainer {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* gap: 20px; */
 }
 
 .articleImgContainer {
@@ -51,6 +129,3 @@ body {
     gap: 5px;
 }
 
-.loadMoreLomitos {
-    margin-top: 30px;
-}

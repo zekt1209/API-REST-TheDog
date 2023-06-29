@@ -11,6 +11,61 @@ const API_UPLOADS = "https://api.thedogapi.com/v1/images/upload";
 
 const spanError = document.querySelector("#spanError");
 
+// Evento y funcion para boton de Corazoncito de Like
+
+const iconHeart1 = document.querySelector("#iconHeart1");
+const iconHeart2 = document.querySelector("#iconHeart2");
+const iconHeart3 = document.querySelector("#iconHeart3");
+
+const changeOfLikeIcon = (numero) => {
+    // Esta funcion va a entrar cuando le den click al icono de heart button, vamos a validar, si el icono tiene la clase fa-regular, le vamos a agregar la de fa-solid, para hacerlo el de like y si ya tiene la de solid, ya no agregamos nada y lo dejamos como estaba
+
+    if (numero == '1') {
+        if (iconHeart1.classList.contains('fa-regular')) {
+            // pon el solid
+            iconHeart1.classList.remove('fa-regular');
+            iconHeart1.classList.add('fa-solid');
+        }
+    }
+
+    if (numero == '2') {
+        if (iconHeart2.classList.contains('fa-regular')) {
+            // pon el solid
+            iconHeart2.classList.remove('fa-regular');
+            iconHeart2.classList.add('fa-solid');
+        }
+    }
+
+    if (numero == '3') {
+        if (iconHeart3.classList.contains('fa-regular')) {
+            // pon el solid
+            iconHeart3.classList.remove('fa-regular');
+            iconHeart3.classList.add('fa-solid');
+        }
+    }
+    
+}
+
+const getBackToNormalHeart = () => {
+    if (iconHeart1.classList.contains('fa-solid')) {
+        iconHeart1.classList.remove('fa-solid');
+        iconHeart1.classList.add('fa-regular');
+    }
+    if (iconHeart2.classList.contains('fa-solid')) {
+        iconHeart2.classList.remove('fa-solid');
+        iconHeart2.classList.add('fa-regular');
+    }
+    if (iconHeart3.classList.contains('fa-solid')) {
+        iconHeart3.classList.remove('fa-solid');
+        iconHeart3.classList.add('fa-regular');
+    }
+
+}
+
+iconHeart1.onclick = () => changeOfLikeIcon('1');
+iconHeart2.onclick = () => changeOfLikeIcon('2');
+iconHeart3.onclick = () => changeOfLikeIcon('3');
+
 // Llamamos a fetch(Nuestra API), lo guardamos en "res" y lo parseamos a json, y lo guardamos en "data"
 // Le asignamos la URL de las imagenes que nos trajo la API a nuestras imagenes del HTML.
 const loadRandomLomitos = async () => {
@@ -52,10 +107,12 @@ const loadRandomLomitos = async () => {
         // btnSaveLomito2.addEventListener("click", () => saveFavoriteLomitos(data[1].id), {once: true});
         // btnSaveLomito3.addEventListener("click", () => saveFavoriteLomitos(img3Id), {once: true});
         
-        // We used event Handlers because eventListeners were having issues at the moment to excecute them multiple times, they were saving the olv value and bringind it in future requests
+        // We used event Handlers because eventListeners were having issues at the moment to excecute them multiple times, they were saving the old value and bringind it in future requests
         btnSaveLomito1.onclick = () => saveFavoriteLomitos(data[0].id);
         btnSaveLomito2.onclick = () => saveFavoriteLomitos(data[1].id);
         btnSaveLomito3.onclick = () => saveFavoriteLomitos(data[2].id);
+
+        getBackToNormalHeart();
 
     } catch (error) {
         console.error("VGG - Random Error: " + error.message);
@@ -147,11 +204,9 @@ const saveFavoriteLomitos = async (imageID) => {
 
     } catch (error) {
         console.error("VGG - Save Favorites Error: " + error.message);
+        // Con axios asi no jala usando el statuscode
         spanError.innerText =
-            "OOOPS! Hubo un error! :( , STATUS: " +
-            statusCode +
-            ", MESSAGE: " +
-            error.message;
+            "OOOPS! Hubo un error! :( , STATUS: /* statusCode */ MESSAGE: " + error.message;
     }
 };
 
@@ -222,6 +277,8 @@ const uploadLomitoPicture = async () => {
 // Event Listeners
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 loadMoreBtn.addEventListener("click", loadRandomLomitos);
+
+
 
 
 // Funciones Invocadas al cargar la pagina por primera vez
