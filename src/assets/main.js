@@ -9,7 +9,7 @@ const API_RANDOM = `https://api.thedogapi.com/v1/images/search`;
 const API_FAVORITES = "https://api.thedogapi.com/v1/favourites";
 const API_UPLOADS = "https://api.thedogapi.com/v1/images/upload";
 
-const spanError = document.querySelector("#spanError");
+const sectionsContainer__spanError = document.querySelector("#sectionsContainer__spanError");
 
 // Evento y funcion para boton de Corazoncito de Like
 
@@ -116,7 +116,7 @@ const loadRandomLomitos = async () => {
 
     } catch (error) {
         console.error("VGG - Random Error: " + error.message);
-        spanError.innerText = "OOOPS! hubo un error :( , STATUS: " + statusCode + ", MENSAJE: " + error.message;
+        sectionsContainer__spanError.innerText = "OOOPS! hubo un error :( , STATUS: " + statusCode + ", MENSAJE: " + error.message;
     }
     
 };
@@ -149,7 +149,7 @@ const loadFavorteLomitos = async () => {
             // Crear evento para cada boton que pertenece a una card del lomito seleccionado y le mandamos su image ID
             btn.addEventListener('click', () => deleteFavoriteLomito(element.id));
 
-            img.classList.add("lomito-image");
+            img.classList.add("randomSection__lomito-image");
             img.alt = "lomito-picture";
             img.src = element.image.url;
 
@@ -162,7 +162,7 @@ const loadFavorteLomitos = async () => {
 
     } catch (error) {
         console.error("VGG - Favorites error: " + error.message);
-        spanError.innerText =
+        sectionsContainer__spanError.innerText =
             "OOOPS! hubo un error :( , STATUS: " +
             statusCode +
             ", message: " +
@@ -205,7 +205,7 @@ const saveFavoriteLomitos = async (imageID) => {
     } catch (error) {
         console.error("VGG - Save Favorites Error: " + error.message);
         // Con axios asi no jala usando el statuscode
-        spanError.innerText =
+        sectionsContainer__spanError.innerText =
             "OOOPS! Hubo un error! :( , STATUS: /* statusCode */ MESSAGE: " + error.message;
     }
 };
@@ -233,7 +233,7 @@ const deleteFavoriteLomito = async (imageID) => {
 
     } catch (error) {
         console.error(error.message);
-        spanError.innerText = `OOPS, Hubo un error :( , STATUS: ${statusCode}, MENSAJE: ${error.message}`; 
+        sectionsContainer__spanError.innerText = `OOPS, Hubo un error :( , STATUS: ${statusCode}, MENSAJE: ${error.message}`; 
     }
 }
 
@@ -268,7 +268,7 @@ const uploadLomitoPicture = async () => {
         loadFavorteLomitos();
 
     } catch (error) {
-        spanError.innerText = `OOOPS! Hubo un error :( , STATUS: ${statusCode}, MESSAGE: ${error.message}`;
+        sectionsContainer__spanError.innerText = `OOOPS! Hubo un error :( , STATUS: ${statusCode}, MESSAGE: ${error.message}`;
         console.error(error.message);
     }
 
