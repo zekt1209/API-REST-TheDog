@@ -17,6 +17,8 @@ const iconHeart1 = document.querySelector("#iconHeart1");
 const iconHeart2 = document.querySelector("#iconHeart2");
 const iconHeart3 = document.querySelector("#iconHeart3");
 
+// Funciones y eventos para boton de Like
+
 const changeOfLikeIcon = (numero) => {
     // Esta funcion va a entrar cuando le den click al icono de heart button, vamos a validar, si el icono tiene la clase fa-regular, le vamos a agregar la de fa-solid, para hacerlo el de like y si ya tiene la de solid, ya no agregamos nada y lo dejamos como estaba
 
@@ -65,6 +67,36 @@ const getBackToNormalHeart = () => {
 iconHeart1.onclick = () => changeOfLikeIcon('1');
 iconHeart2.onclick = () => changeOfLikeIcon('2');
 iconHeart3.onclick = () => changeOfLikeIcon('3');
+
+// Funciones para boton de Upload own Lomito
+
+let file_button = document.querySelector('#file_button');
+let imgLomitoUploaded = document.querySelector('#imgLomitoUploaded');
+let file_name = document.querySelector('#file_name');
+let uploadSection__published_label = document.querySelector('#uploadSection__published_label');
+
+const showThumbnailAndPicName = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file_button.files[0]);
+    console.log(file_button.files[0]);
+
+    reader.onload = () => {
+        imgLomitoUploaded.setAttribute('src', reader.result);
+    }
+
+    file_name.textContent = file_button.files[0].name;
+}
+
+const removeThumbnailAndPicName = () => {
+    imgLomitoUploaded.removeAttribute('src');
+    file_name.innerHTML = '';
+}
+
+file_button.onchange = () => showThumbnailAndPicName();
+
+
+
+// ----------------------- Llamadas a la API -----------------------------------------
 
 // Llamamos a fetch(Nuestra API), lo guardamos en "res" y lo parseamos a json, y lo guardamos en "data"
 // Le asignamos la URL de las imagenes que nos trajo la API a nuestras imagenes del HTML.
@@ -143,8 +175,18 @@ const loadFavorteLomitos = async () => {
             article.classList.add("articleImgContainer");
             const img = document.createElement('img');
             const btn = document.createElement('button');
-            const btnDeleteFromFavText = document.createTextNode('Eliminar de Favoritos');
-            btn.appendChild(btnDeleteFromFavText);
+            const span = document.createElement('span');
+            const icon = document.createElement('i');
+
+            span.classList.add('spanIconContainer');
+            icon.classList.add('fa-solid', 'fa-xmark');
+            btn.classList.add('btnCircle');
+
+            span.appendChild(icon);
+            btn.appendChild(span);
+
+            // const btnDeleteFromFavText = document.createTextNode('Eliminar de Favoritos');
+            // btn.appendChild(btnDeleteFromFavText);
 
             // Crear evento para cada boton que pertenece a una card del lomito seleccionado y le mandamos su image ID
             btn.addEventListener('click', () => deleteFavoriteLomito(element.id));
@@ -263,7 +305,9 @@ const uploadLomitoPicture = async () => {
         console.log('Lomito Uploaded! ');
         console.log(data);
         console.log('Data.url: ' + data.url);
-    
+
+        uploadSection__published_label.textContent = "Published !";
+        
         saveFavoriteLomitos(data.id);
         loadFavorteLomitos();
 

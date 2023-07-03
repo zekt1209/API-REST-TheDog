@@ -18,6 +18,11 @@
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/d3ca50861d.js" crossorigin="anonymous"></script>
 
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600;700&display=swap" rel="stylesheet">
+
         <!-- CSS Classic File -->
         <link
             rel="stylesheet"
@@ -30,9 +35,9 @@
                 <!-- Here we show an error if we get a bad request on REST API -->
                 <span id="sectionsContainer__spanError"></span>
                 
-                <div class="randomSection">
+                <div class="section randomSection">
     
-                    <h1>Random Lomitos</h1>
+                    <h1 class="h1-section-text randomSection__h1-text">Random Lomitos</h1>
                     <div class="lomitosRandomImagesContainer">
                         <article class="articleImgContainer">
                             <img
@@ -41,7 +46,7 @@
                                 alt="lomito-picture"
                                 srcset=""
                             />
-                            <button id="btnSaveLomito1" class="btnSaveRandom"><span class="spanIconContainer"><i id="iconHeart1" class="fa-regular fa-heart heart-icon " ></i></span></button>
+                            <button id="btnSaveLomito1" class="btnCircle"><span class="spanIconContainer"><i id="iconHeart1" class="fa-regular fa-heart heart-icon " ></i></span></button>
                         </article>
     
                         <article class="articleImgContainer">
@@ -51,7 +56,7 @@
                                 alt="lomito-picture"
                                 srcset=""
                             />
-                            <button id="btnSaveLomito2" class="btnSaveRandom"><span class="spanIconContainer"><i id="iconHeart2" class="fa-regular fa-heart heart-icon " ></i></span></button>
+                            <button id="btnSaveLomito2" class="btnCircle"><span class="spanIconContainer"><i id="iconHeart2" class="fa-regular fa-heart heart-icon " ></i></span></button>
                         </article>
     
                         <article class="articleImgContainer">
@@ -61,7 +66,7 @@
                                 alt="lomito-picture"
                                 srcset=""
                             />
-                            <button id="btnSaveLomito3" class="btnSaveRandom"><span class="spanIconContainer"><i id="iconHeart3" class="fa-regular fa-heart heart-icon " ></i></span></button>
+                            <button id="btnSaveLomito3" class="btnCircle"><span class="spanIconContainer"><i id="iconHeart3" class="fa-regular fa-heart heart-icon " ></i></span></button>
                         </article>
                     </div>
                     <button
@@ -73,8 +78,8 @@
                 </div>
     
     
-                <div class="favoriteSection">
-                    <h1>Favorite Lomitos</h1>
+                <div class="section favoriteSection">
+                    <h1 class="h1-section-text">Favorite Lomitos</h1>
                     <div id="lomitosCardsContainer" class="lomitosFavoriteImgsContainer">
                         <!-- <article>
                             <img
@@ -88,11 +93,24 @@
                     </div>
                 </div>
 
-                <div class="uploadSection">
-                    <h2>Upload your Lomito!</h2>
-                    <form id="uploadingForm">
-                        <input id="file" type="file" name="file">
-                        <button type="button" onclick="uploadLomitoPicture()">Upload</button>
+                <div class="section uploadSection">
+                    <h1 class="h1-section-text">Upload your Lomito!</h1>
+                    <form id="uploadingForm" class="uploadSection__uploadingForm">
+                        
+                        <label for="file_button" class="btn btn-primary uploadSection__upload-label"><i class="fa-solid fa-upload"></i>&nbsp; Load image</label>
+                        <input id="file_button" class="input-file-btn btn btn-primary" type="file" name="file" accept="image/*">
+                        
+                        <article class="articleImgContainer uploadSection__articleImgContainer">
+                            <img
+                                class="uploadSection__lomito-image"
+                                id="imgLomitoUploaded"
+                            />
+                            <span class="uploadSection__spanUpload">New Image</span>
+                        </article>
+                        <span id="file_name" class="span_text"></span>
+
+                        <button class="btn btn-success uploadSection__btn-uplpoad" type="button" onclick="uploadLomitoPicture()">Publish</button>
+                        <span id="uploadSection__published_label" class="uploadSection__spanPublishedtext"></span>
                     </form>
                 </div>
 

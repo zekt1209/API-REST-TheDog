@@ -1,9 +1,14 @@
 :root {
+--dark-blue: #192a56;
+--dark-gray: #718093;
 
+--white: #f5f6fa;
+--green_published: #4cd137;
 }
 
 body {
-    background-color: #ff0019;
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--dark-blue);
 }
 
 .randomSection__lomito-image {
@@ -12,6 +17,10 @@ body {
 
     border-radius: 8px;
 }
+
+/* .randomSection__lomito-image:hover {
+    transform: scale(1.1);
+} */
 
 .mainContainer {
     display: flex;
@@ -26,16 +35,45 @@ body {
 .sectionsContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     width: 1230px;
+}
+
+.h1-section-text {
+    color: var(--white);
+    margin-top: 20px;
+    margin-bottom: 25px;
+
+    font-weight: 600;
+}
+
+.section {
+    margin-top: 40px;
+    background-color: var(--dark-gray);
+    border-radius: 8px;
+    padding: 20px;
+
+}
+
+.span_text {
+    color: var(--white);
 }
 
 
 /* Random Section */
 
+.randomSection__h1-text {
+}
+
 .randomSection {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
+    width: 1100px;
+    
 
 }
 
@@ -43,10 +81,9 @@ body {
     display: flex;
     gap: 20px;
 
-    background-color: #1c3643;
+    /* background-color: #1c3643; */
     border-radius: 8px;
 
-    padding: 60px;
 }
 
 
@@ -54,29 +91,34 @@ body {
 /* ------------------------- */
 /* ----------------------------- Like heart button */
 
-.btnSaveRandom {
+.articleImgContainer {
+    position: relative;
+}
+
+.btnCircle {
     position: absolute;
+    right: 0;
     padding: 0;
     margin: 0;
     
     
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     
     /* width: 100%;
     height: 100%; */
     
     
     background-color: #1c3643;
-    border-radius: 20px;
+    border-radius: 50%;
     border: none;
 }
 
 
 .spanIconContainer {
-display: flex;
+/* display: flex;
 justify-content: center;
-align-items: center;
+align-items: center; */
 width: 100%;
 height: 100%;
 
@@ -92,7 +134,7 @@ color: #ff0019;
 .fa-heart {
 display: flex;
 justify-content: center;
-align-items: center;
+align-items: center; 
 
 font-size: 30px;
 color: #ff0019;
@@ -103,7 +145,7 @@ height: 100%;
 
 .loadMoreLomitos {
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* Favorite Section */
@@ -120,12 +162,106 @@ height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* gap: 20px; */
+    gap: 20px;
+
 }
 
 .articleImgContainer {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    /* gap: 5px; */
 }
 
+.fa-xmark {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+    font-size: 25px;
+    color: var(--white);
+    
+    width: 100%;
+    height: 100%;
+    }
+
+.fa-xmark:active {
+    color: var(--dark-gray);
+}
+
+
+
+.uploadSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* width: 750px; */
+}
+
+.uploadSection__uploadingForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* input[type="file"] {
+
+} */
+
+.input-file-btn {
+    display: none;
+}
+
+.uploadSection__upload-label {
+    /* box-shadow: 5px 15px 25px black; */
+    margin-bottom: 15px;
+}
+.uploadSection__upload-label:active {
+    transform: scale(0.9);
+}
+
+
+.uploadSection__btn-uplpoad {
+    width: 150px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.uploadSection__articleImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--white);
+
+    width: 282px;
+    height: 246px;
+
+    border-radius: 8px;
+
+}
+
+.uploadSection__spanUpload {
+    position: absolute;
+
+    color: var(--white);
+}
+
+/* .uploadSection__upload-icon {
+    position: absolute;
+} */
+
+.uploadSection__lomito-image {
+z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 8px;
+}
+
+.uploadSection__spanPublishedtext {
+    color: var(--green_published);
+    font-weight: 500;
+}
